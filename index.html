@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>MancaGTPS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+        rel="stylesheet"
+    />
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .rgb-button {
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-align: center;
+            font-weight: bold;
+            margin: 10px 0;
+            display: flex;
+            align-items: center;
+            animation: smooth-rgb 10s infinite;
+            cursor: pointer;
+            border: 1px solid #fff;
+            transition: transform 0.2s;
+        }
+
+        .rgb-button:hover {
+            transform: scale(1.05);
+        }
+
+        .rgb-button i {
+            margin-right: 10px;
+        }
+
+        .green-button {
+            background-color: #32cd32;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-align: center;
+            font-weight: bold;
+            color: #000;
+            cursor: pointer;
+            margin: 10px 0;
+        }
+
+        @keyframes smooth-rgb {
+            0% {
+                background-color: rgb(255, 0, 0); /* Red */
+            }
+            33% {
+                background-color: rgb(0, 255, 0); /* Green */
+            }
+            66% {
+                background-color: rgb(0, 0, 255); /* Blue */
+            }
+            100% {
+                background-color: rgb(255, 0, 0); /* Back to Red */
+            }
+        }
+
+        .progress-bar {
+            background: linear-gradient(90deg, rgba(0, 255, 255, 1) 0%, rgba(0, 128, 255, 1) 100%);
+        }
+
+        .time-box {
+            background: rgba(255, 0, 255, 0.2);
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body class="flex flex-col items-center justify-center min-h-screen">
+    <div class="text-center w-11/12 max-w-screen-md">
+        <img
+            alt="Profile picture of MancaGTPS"
+            class="rounded-full mx-auto mb-4"
+            height="100"
+            src="https://storage.googleapis.com/a1aa/image/lR7kZE9LKW40OxkZ2y7Qd0uuiiKPvcmG0ZhUJeeSHBgcNKCUA.jpg"
+            width="100"
+        />
+        <h1 class="text-xl font-bold">@MancaGTPS</h1>
+        <p class="text-sm">OPEN PROMOTE GTPS</p>
+    </div>
+    <div class="mt-4 w-11/12 max-w-screen-md">
+        <a href="https://chat.whatsapp.com/KYInJpwS9Sv16TuQ6WjwsG" target="_blank" class="rgb-button">
+            <i class="fab fa-whatsapp"></i> Manca(GTPS) Community
+        </a>
+        <a href="#" onclick="alert('Don\\'t Have')" class="rgb-button">
+            <i class="fab fa-discord"></i> Manca Discord
+        </a>
+        <a href="https://gtpsgrowtopia.github.io" target="_blank" class="rgb-button">
+            <i class="fas fa-bolt"></i> POWER TUNNEL
+        </a>
+        <a href="https://gtpsgrowtopia.github.io" target="_blank" class="rgb-button">
+            <i class="fas fa-server"></i> VIRTUAL HOST
+        </a>
+        <a href="https://gtpsgrowtopia.github.io" target="_blank" class="rgb-button">
+            <i class="fas fa-globe"></i> HOST GO
+        </a>
+        <a href="#" onclick="alert('Coming Soon')" class="rgb-button">
+            <i class="fas fa-shopping-cart"></i> BUY PROMOTE
+        </a>
+        <a href="https://gtpsgrowtopia.github.io" target="_blank" class="rgb-button">
+            <i class="fas fa-globe"></i> How To Play
+         </a>
+    </div>
+    </div>
+    <div class="mt-4 w-11/12 max-w-screen-md text-center">
+        <p class="text-xl font-bold">LATEST VIDEO APPEARS IN</p>
+        <div class="green-button mt-2">
+            <p id="countdown" class="text-2xl font-bold">--:--:--</p>
+        </div>
+        <div class="w-full bg-gray-700 rounded-full h-2.5 dark:bg-gray-700 mt-2">
+            <div id="progress" class="progress-bar h-2.5 rounded-full" style="width: 0%"></div>
+        </div>
+        <p id="progress-text" class="mt-2">0% Complete</p>
+    </div>
+    <div class="mt-4 text-center w-11/12 max-w-screen-md">
+        <div class="grid grid-cols-4 gap-4 text-sm">
+            <div class="time-box">
+                <p>WIB</p>
+                <p id="wib">--:--:--</p>
+            </div>
+            <div class="time-box">
+                <p>WITA</p>
+                <p id="wita">--:--:--</p>
+            </div>
+            <div class="time-box">
+                <p>WIT</p>
+                <p id="wit">--:--:--</p>
+            </div>
+            <div class="time-box">
+                <p>UTC</p>
+                <p id="utc">--:--:--</p>
+            </div>
+        </div>
+    </div>
+    <footer class="mt-4 text-center text-xs">
+        <p>© 2024 Manca GTPS. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function updateTime() {
+            const now = new Date();
+            const utc = now.toUTCString();
+            const utcDate = new Date(utc);
+
+            const wib = new Date(utcDate.getTime() + 7 * 60 * 60 * 1000);
+            const wita = new Date(utcDate.getTime() + 8 * 60 * 60 * 1000);
+            const wit = new Date(utcDate.getTime() + 9 * 60 * 60 * 1000);
+
+            document.getElementById("wib").innerText = wib.toLocaleTimeString();
+            document.getElementById("wita").innerText = wita.toLocaleTimeString();
+            document.getElementById("wit").innerText = wit.toLocaleTimeString();
+            document.getElementById("utc").innerText = utcDate.toLocaleTimeString("en-GB");
+        }
+
+        function updateCountdown() {
+            const now = new Date();
+            const target = new Date();
+            target.setHours(19, 0, 0, 0);
+            if (now > target) target.setDate(target.getDate() + 1);
+
+            const diff = target - now;
+
+            const hours = Math.floor(diff / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+            document.getElementById("countdown").innerText =
+                `${hours.toString().padStart(2, "0")}:${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
+
+            const totalSeconds = 24 * 60 * 60;
+            const elapsedSeconds = totalSeconds - diff / 1000;
+            const progress = Math.min((elapsedSeconds / totalSeconds) * 100, 100);
+
+            document.getElementById("progress").style.width = `${progress}%`;
+            document.getElementById("progress-text").innerText = `${Math.floor(progress)}% Complete`;
+
+            const resetTime = new Date(target.getTime() + 2 * 60 * 1000);
+            if (now > resetTime) {
+                document.getElementById("progress").style.width = "1%";
+                document.getElementById("progress-text").innerText = "1% Complete";
+            }
+        }
+
+        setInterval(updateTime, 1000);
+        setInterval(updateCountdown, 1000);
+    </script>
+</body>
+</html>
